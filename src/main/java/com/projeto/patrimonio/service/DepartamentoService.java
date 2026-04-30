@@ -8,6 +8,6 @@ package com.projeto.patrimonio.service;
  *
  * @author Aluno
  */
-public class PatrimonioService {
+public class DepartamentoService {
     
 }
