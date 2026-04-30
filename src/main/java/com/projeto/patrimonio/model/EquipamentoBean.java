@@ -13,15 +13,17 @@ public class EquipamentoBean {
     private String codigoPatrimonio;
     private String tipo;
     private String marca;
+    private int idDepartamento;
 
-    public EquipamentoBean(int idEquipamento, String codigoPatrimonio, String tipo, String marca) {
+    public EquipamentoBean() {
+    }
+
+    public EquipamentoBean(int idEquipamento, String codigoPatrimonio, String tipo, String marca, int idDepartamento) {
         this.idEquipamento = idEquipamento;
         this.codigoPatrimonio = codigoPatrimonio;
         this.tipo = tipo;
         this.marca = marca;
-    }
-
-    public EquipamentoBean() {
+        this.idDepartamento = idDepartamento;
     }
 
     public int getIdEquipamento() {
@@ -56,4 +58,12 @@ public class EquipamentoBean {
         this.marca = marca;
     }
 
+    public int getIdDepartamento() {
+        return idDepartamento;
+    }
+
+    public void setIdDepartamento(int idDepartamento) {
+        this.idDepartamento = idDepartamento;
+    }
+    
 }
