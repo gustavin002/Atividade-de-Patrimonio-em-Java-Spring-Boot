@@ -4,10 +4,22 @@
  */
 package com.projeto.patrimonio.service;
 
+import com.projeto.patrimonio.model.EquipamentoBean;
+import com.projeto.patrimonio.repository.EquipamentoDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author Aluno
  */
+@Service
 public class EquipamentoService {
     
+    @Autowired
+    private EquipamentoDao repository;
+    
+    public void editarEquipamentos(EquipamentoBean equipamento) {
+        repository.editarEquipamentos(equipamento);
+    }
 }
