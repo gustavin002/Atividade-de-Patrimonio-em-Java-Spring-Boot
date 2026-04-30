@@ -3,11 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.projeto.patrimonio.service;
+import com.projeto.patrimonio.model.PatrimonioBean;
+import com.projeto.patrimonio.repository.EquipamentoDAO;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-/**
- *
- * @author Aluno
- */
+@Service
 public class EquipamentoService {
+    
+    @Autowired
+    private EquipamentoDAO repository;
+    
+    public List<PatrimonioBean> listar(){
+        return repository.listarEquipamentos();
+    }
     
 }
