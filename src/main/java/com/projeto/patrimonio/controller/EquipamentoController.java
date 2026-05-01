@@ -11,6 +11,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,5 +37,13 @@ public class EquipamentoController {
 public String adicionar(@RequestBody EquipamentoBean equipamento) {
     service.adicionar(equipamento);
     return "Cadastrado com sucesso!";
+    }
+    
+    @PutMapping("/{id}")
+    public String editarEquipamentos(@PathVariable int id, @RequestBody EquipamentoBean equipamento) {
+        equipamento.setIdEquipamento(id);
+
+        equipamentoService.editarEquipamentos(equipamento);
+        return "Equipamento atualizado com sucesso!";
     }
 }
