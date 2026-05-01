@@ -9,5 +9,7 @@ package com.projeto.patrimonio.repository;
  * @author Aluno
  */
 public class DepartamentoDao {
+   
+    
     
 }

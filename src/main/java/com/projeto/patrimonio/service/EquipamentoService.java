@@ -6,6 +6,7 @@ package com.projeto.patrimonio.service;
 
 import com.projeto.patrimonio.model.EquipamentoBean;
 import com.projeto.patrimonio.repository.EquipamentoDao;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,15 @@ public class EquipamentoService {
     @Autowired
     private EquipamentoDao repository;
     
+    public List<EquipamentoBean> lerTodos(){
+      return repository.lerTodos();
+    }
+    
+    public void adicionar(EquipamentoBean equipamento){
+        repository.criar(equipamento);
     public void editarEquipamentos(EquipamentoBean equipamento) {
         repository.editarEquipamentos(equipamento);
     }
 }
+    
+
