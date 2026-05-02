@@ -74,8 +74,9 @@ public class EquipamentoDao {
 
     } catch (SQLException e) {
         e.printStackTrace();
-}
-    public void editarEquipamentos(EquipamentoBean equipamento) {
+      }
+    }
+    public void editarEquipamentos(EquipamentoBean equipamento){
         try {
             Connection conn = Conexao.conectar();
             PreparedStatement stmt = conn.prepareStatement("UPDATE equipamento SET id_departamento=?, tipo=?, marca=? WHERE id_equipamento=?");

@@ -26,6 +26,8 @@ public class EquipamentoService {
     
     public void adicionar(EquipamentoBean equipamento){
         repository.criar(equipamento);
+    }
+    
     public void editarEquipamentos(EquipamentoBean equipamento) {
         repository.editarEquipamentos(equipamento);
     }

@@ -43,7 +43,7 @@ public String adicionar(@RequestBody EquipamentoBean equipamento) {
     public String editarEquipamentos(@PathVariable int id, @RequestBody EquipamentoBean equipamento) {
         equipamento.setIdEquipamento(id);
 
-        equipamentoService.editarEquipamentos(equipamento);
+        service.editarEquipamentos(equipamento);
         return "Equipamento atualizado com sucesso!";
     }
 }
