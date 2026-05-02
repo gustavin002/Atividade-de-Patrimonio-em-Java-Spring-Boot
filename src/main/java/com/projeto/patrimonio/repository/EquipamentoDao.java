@@ -76,6 +76,7 @@ public class EquipamentoDao {
         e.printStackTrace();
       }
     }
+    
     public void editarEquipamentos(EquipamentoBean equipamento){
         try {
             Connection conn = Conexao.conectar();
