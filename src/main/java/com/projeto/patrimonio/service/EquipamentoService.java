@@ -23,7 +23,7 @@ public class EquipamentoService {
     public List<EquipamentoBean> lerTodos(){
       return repository.lerTodos();
     }
-    
+     
     public void adicionar(EquipamentoBean equipamento){
         repository.criar(equipamento);
     }

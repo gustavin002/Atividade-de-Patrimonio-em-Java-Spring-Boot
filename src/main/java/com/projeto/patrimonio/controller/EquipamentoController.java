@@ -38,7 +38,7 @@ public String adicionar(@RequestBody EquipamentoBean equipamento) {
     service.adicionar(equipamento);
     return "Cadastrado com sucesso!";
     }
-    
+     
     @PutMapping("/{id}")
     public String editarEquipamentos(@PathVariable int id, @RequestBody EquipamentoBean equipamento) {
         equipamento.setIdEquipamento(id);

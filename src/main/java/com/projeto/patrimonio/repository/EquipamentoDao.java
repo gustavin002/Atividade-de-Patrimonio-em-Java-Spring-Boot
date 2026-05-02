@@ -74,7 +74,7 @@ public class EquipamentoDao {
 
     } catch (SQLException e) {
         e.printStackTrace();
-      }
+      } 
     }
     
     public void editarEquipamentos(EquipamentoBean equipamento){
