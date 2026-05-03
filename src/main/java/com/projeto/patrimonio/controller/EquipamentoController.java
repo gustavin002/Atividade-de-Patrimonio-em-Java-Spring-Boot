@@ -32,22 +32,23 @@ public class EquipamentoController {
     @PostMapping("/criar")
     public String criar(@RequestBody PatrimonioBean equipamento) {
     service.criar(equipamento);
-    
     return "Cadastrado com sucesso!";
+  
+    public String adicionar(@RequestBody EquipamentoBean equipamento) {
+      service.adicionar(equipamento);
+      return "Cadastrado com sucesso!";
     }
-     
+    
     @PutMapping("/{id}")
     public String editarEquipamentos(@PathVariable int id, @RequestBody PatrimonioBean equipamento) {
         equipamento.setIdEquipamento(id);
         service.editarEquipamentos(equipamento);
-        
         return "Equipamento atualizado com sucesso!";
     }
     
     @DeleteMapping("/{id}")
     public String excluirEquipamentos(@PathVariable int id) {
         service.excluirEquipamentos(id);
-        
         return "Equipamento excluido com sucesso";
     }
 }

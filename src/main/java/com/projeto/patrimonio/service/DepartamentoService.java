@@ -4,10 +4,23 @@
  */
 package com.projeto.patrimonio.service;
 
+import com.projeto.patrimonio.model.EquipamentoBean;
+import com.projeto.patrimonio.repository.DepartamentoDao;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author Aluno
  */
+@Service
 public class DepartamentoService {
     
+    @Autowired
+    private DepartamentoDao repository;
+    
+    public List<EquipamentoBean> lerDepartamento(int id) {
+        return repository.lerDepartamento(id);
+    }
 }

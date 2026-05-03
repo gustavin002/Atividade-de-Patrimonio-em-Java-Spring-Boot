@@ -14,9 +14,9 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class EquipamentoDAO {
-    public List<PatrimonioBean> lerTodos(){
-        List<PatrimonioBean> dados = new ArrayList();
+public class EquipamentoDao {      
+    public List<EquipamentoBean> lerTodos(){
+        List<EquipamentoBean> dados = new ArrayList();
         try{
             Connection conn = Conexao.conectar();
             PreparedStatement stmt = null;
@@ -39,8 +39,6 @@ public class EquipamentoDAO {
         }
          return dados;   
     }
-    
-    
     
     public void criar(PatrimonioBean equipamento) {
         try {
@@ -85,6 +83,11 @@ public class EquipamentoDAO {
             stmt.setString(2, equipamento.getTipo());
             stmt.setString(3, equipamento.getMarca());
             stmt.setInt(4, equipamento.getIdEquipamento());
+          
+            PreparedStatement stmt = conn.prepareStatement("UPDATE equipamento SET tipo=?, marca=? WHERE id_equipamento=?");
+            stmt.setString(1, equipamento.getTipo());
+            stmt.setString(2, equipamento.getMarca());
+            stmt.setInt(3, equipamento.getIdEquipamento());
             
             stmt.executeUpdate();
             
@@ -95,7 +98,7 @@ public class EquipamentoDAO {
             e.printStackTrace();
         }
     }
-
+  
     public void excluirEquipamentos (int id){
         try{
             Connection conn = Conexao.conectar();
@@ -112,5 +115,5 @@ public class EquipamentoDAO {
             e.printStackTrace();
         }
     }
-    
+
 }
