@@ -34,9 +34,6 @@ public class EquipamentoController {
     service.criar(equipamento);
     return "Cadastrado com sucesso!";
   
-    public String adicionar(@RequestBody EquipamentoBean equipamento) {
-      service.adicionar(equipamento);
-      return "Cadastrado com sucesso!";
     }
     
     @PutMapping("/{id}")

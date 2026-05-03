@@ -14,10 +14,9 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 @Repository
-
-public class EquipamentoDao {      
-    public List<EquipamentoBean> lerTodos(){
-        List<EquipamentoBean> dados = new ArrayList();
+public class EquipamentoDAO {
+    public List<PatrimonioBean> lerTodos(){
+        List<PatrimonioBean> dados = new ArrayList();
         try{
             Connection conn = Conexao.conectar();
             PreparedStatement stmt = null;
@@ -85,7 +84,7 @@ public class EquipamentoDao {
             stmt.setString(3, equipamento.getMarca());
             stmt.setInt(4, equipamento.getIdEquipamento());
           
-            PreparedStatement stmt = conn.prepareStatement("UPDATE equipamento SET tipo=?, marca=? WHERE id_equipamento=?");
+            stmt = conn.prepareStatement("UPDATE equipamento SET tipo=?, marca=? WHERE id_equipamento=?");
             stmt.setString(1, equipamento.getTipo());
             stmt.setString(2, equipamento.getMarca());
             stmt.setInt(3, equipamento.getIdEquipamento());
@@ -99,8 +98,6 @@ public class EquipamentoDao {
             e.printStackTrace();
         }
     }
-
-}
   
     public void excluirEquipamentos (int id){
         try{
@@ -118,6 +115,4 @@ public class EquipamentoDao {
             e.printStackTrace();
         }
     }
-
-
 }
