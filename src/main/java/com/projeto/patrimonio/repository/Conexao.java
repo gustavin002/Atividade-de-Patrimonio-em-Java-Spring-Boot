@@ -8,10 +8,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- *
- * @author Aluno
- */
 public class Conexao {
     public static final String url = "jdbc:mysql://localhost:3307/db_patrimonio";
     public static final String user = "root";

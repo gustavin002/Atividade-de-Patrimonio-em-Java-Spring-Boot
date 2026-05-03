@@ -4,12 +4,7 @@
  */
 package com.projeto.patrimonio.repository;
 
-/**
- *
- * @author Aluno
- */
-public class DepartamentoDao {
+public class DepartamentoDAO {
    
-    
     
 }
