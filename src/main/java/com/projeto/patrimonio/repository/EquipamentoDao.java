@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository 
 public class EquipamentoDao {
+    
     public void editarEquipamentos(EquipamentoBean equipamento) {
         try {
             Connection conn = Conexao.conectar();
@@ -32,4 +33,5 @@ public class EquipamentoDao {
             e.printStackTrace();
         }
     }
+    
 }

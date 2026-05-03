@@ -22,13 +22,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class EquipamentoController {
     
     @Autowired
-    private EquipamentoService equipamentoService;
+    private EquipamentoService service;
     
     @PutMapping("/{id}")
     public String editarEquipamentos(@PathVariable int id, @RequestBody EquipamentoBean equipamento) {
         equipamento.setIdEquipamento(id);
 
-        equipamentoService.editarEquipamentos(equipamento);
+        service.editarEquipamentos(equipamento);
         return "Equipamento atualizado com sucesso!";
     }
+    
 }
