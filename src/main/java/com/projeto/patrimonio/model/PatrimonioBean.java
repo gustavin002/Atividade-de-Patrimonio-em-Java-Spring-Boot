@@ -8,7 +8,7 @@ package com.projeto.patrimonio.model;
  *
  * @author Aluno
  */
-public class EquipamentoBean {
+public class PatrimonioBean {
     private int idEquipamento;
     private String codigoPatrimonio;
     private String tipo;
@@ -17,10 +17,10 @@ public class EquipamentoBean {
     private String nome;
     private int andar;
 
-    public EquipamentoBean() {
+    public PatrimonioBean() {
     }
 
-    public EquipamentoBean(int idEquipamento, String codigoPatrimonio, String tipo, String marca, int idDepartamento, String nome, int andar) {
+    public PatrimonioBean(int idEquipamento, String codigoPatrimonio, String tipo, String marca, int idDepartamento, String nome, int andar) {
         this.idEquipamento = idEquipamento;
         this.codigoPatrimonio = codigoPatrimonio;
         this.tipo = tipo;
