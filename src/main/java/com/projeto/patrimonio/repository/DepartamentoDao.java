@@ -20,7 +20,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class DepartamentoDao {
     public List<EquipamentoBean> lerDepartamento(int id) {
-    List<EquipamentoBean> lista = new ArrayList();
+        List<EquipamentoBean> lista = new ArrayList();
 
     try {
         Connection conn = Conexao.conectar();
@@ -50,4 +50,5 @@ public class DepartamentoDao {
 
     return lista;
     }
+
 }
