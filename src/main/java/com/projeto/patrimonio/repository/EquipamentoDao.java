@@ -20,8 +20,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class EquipamentoDao {
-    public void editarEquipamentos(EquipamentoBean equipamento) {
-      
     public List<EquipamentoBean> lerTodos(){
         List<EquipamentoBean> dados = new ArrayList();
         try{
@@ -29,7 +27,7 @@ public class EquipamentoDao {
             PreparedStatement stmt = null;
             ResultSet rs = null;
             
-            stmt = conn.prepareStatement("SELECT * FROM equipamento ");
+            stmt = conn.prepareStatement("SELECT * FROM equipamento");
             rs = stmt.executeQuery();
             
             while(rs.next()){
@@ -97,5 +95,5 @@ public class EquipamentoDao {
         }
     }
 }
-}
+
 
