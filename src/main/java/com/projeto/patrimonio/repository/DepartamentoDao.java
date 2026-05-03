@@ -4,6 +4,8 @@
  */
 package com.projeto.patrimonio.repository;
 
+public class DepartamentoDAO {
+
 import com.projeto.patrimonio.model.EquipamentoBean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,10 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 
-/**
- *
- * @author Aluno
- */
+
 @Repository
 public class DepartamentoDao {
     public List<EquipamentoBean> lerDepartamento(int id) {
@@ -50,5 +49,4 @@ public class DepartamentoDao {
 
     return lista;
     }
-
 }
