@@ -22,8 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Aluno
  */
  @RestController
-@RequestMapping("/api/equipamento")
-public class EquipamentoController {
+ @RequestMapping("/api/equipamentos")
+ public class EquipamentoController {
 
     @Autowired
     private EquipamentoService service; 
@@ -33,12 +33,12 @@ public class EquipamentoController {
         return service.lerTodos();
     }
 
-   @PostMapping("/criar")
-public String adicionar(@RequestBody EquipamentoBean equipamento) {
-    service.adicionar(equipamento);
-    return "Cadastrado com sucesso!";
+    @PostMapping("/criar")
+    public String adicionar(@RequestBody EquipamentoBean equipamento) {
+      service.adicionar(equipamento);
+      return "Cadastrado com sucesso!";
     }
-     
+    
     @PutMapping("/{id}")
     public String editarEquipamentos(@PathVariable int id, @RequestBody EquipamentoBean equipamento) {
         equipamento.setIdEquipamento(id);
@@ -46,4 +46,5 @@ public String adicionar(@RequestBody EquipamentoBean equipamento) {
         service.editarEquipamentos(equipamento);
         return "Equipamento atualizado com sucesso!";
     }
+    
 }

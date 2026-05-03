@@ -17,8 +17,11 @@ import org.springframework.stereotype.Repository;
  *
  * @author Aluno
  */
+
 @Repository
 public class EquipamentoDao {
+    public void editarEquipamentos(EquipamentoBean equipamento) {
+      
     public List<EquipamentoBean> lerTodos(){
         List<EquipamentoBean> dados = new ArrayList();
         try{
@@ -93,5 +96,6 @@ public class EquipamentoDao {
             e.printStackTrace();
         }
     }
-
 }
+}
+

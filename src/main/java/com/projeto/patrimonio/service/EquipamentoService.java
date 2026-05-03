@@ -31,6 +31,7 @@ public class EquipamentoService {
     public void editarEquipamentos(EquipamentoBean equipamento) {
         repository.editarEquipamentos(equipamento);
     }
+    
 }
     
 
