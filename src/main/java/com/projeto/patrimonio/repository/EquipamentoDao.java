@@ -14,6 +14,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 @Repository
+
 public class EquipamentoDao {      
     public List<EquipamentoBean> lerTodos(){
         List<EquipamentoBean> dados = new ArrayList();
@@ -98,6 +99,8 @@ public class EquipamentoDao {
             e.printStackTrace();
         }
     }
+
+}
   
     public void excluirEquipamentos (int id){
         try{
@@ -115,5 +118,6 @@ public class EquipamentoDao {
             e.printStackTrace();
         }
     }
+
 
 }
