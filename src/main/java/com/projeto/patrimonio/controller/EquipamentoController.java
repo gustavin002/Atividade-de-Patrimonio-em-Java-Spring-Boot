@@ -4,7 +4,8 @@
  */
 package com.projeto.patrimonio.controller;
 
-import com.projeto.patrimonio.model.PatrimonioBean;
+import com.projeto.patrimonio.model.EquipamentoBean;
+import com.projeto.patrimonio.model.EquipamentoDepartamentoBean;
 import com.projeto.patrimonio.service.EquipamentoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,26 +23,27 @@ import org.springframework.web.bind.annotation.RestController;
 public class EquipamentoController {
 
     @Autowired
-    private EquipamentoService service; 
-
-    @GetMapping("/lertodos")
-    public List<PatrimonioBean> lerTodos() {
-        return service.lerTodos();
-    }
-
-    @PostMapping("/criar")
-    public String criar(@RequestBody PatrimonioBean equipamento) {
+    private EquipamentoService service;
+    
+    @PostMapping
+    public String criar(@RequestBody EquipamentoBean equipamento) {
     service.criar(equipamento);
     return "Cadastrado com sucesso!";
   
     }
+
+    @GetMapping
+    public List<EquipamentoDepartamentoBean> listarEquipamentos() {
+        return service.listarEquipamentos();
+    }
     
     @PutMapping("/{id}")
-    public String editarEquipamentos(@PathVariable int id, @RequestBody PatrimonioBean equipamento) {
+    public String editarEquipamentos(@PathVariable int id, @RequestBody EquipamentoBean equipamento) {
         equipamento.setIdEquipamento(id);
         service.editarEquipamentos(equipamento);
         return "Equipamento atualizado com sucesso!";
     }
+
     
     @DeleteMapping("/{id}")
     public String excluirEquipamentos(@PathVariable int id) {

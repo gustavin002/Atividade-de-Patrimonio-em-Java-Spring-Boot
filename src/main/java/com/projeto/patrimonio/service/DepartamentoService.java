@@ -4,7 +4,7 @@
  */
 package com.projeto.patrimonio.service;
 
-import com.projeto.patrimonio.model.PatrimonioBean;
+import com.projeto.patrimonio.model.EquipamentoBean;
 import com.projeto.patrimonio.repository.DepartamentoDAO;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class DepartamentoService {
     @Autowired
     private DepartamentoDAO repository;
     
-    public List<PatrimonioBean> lerDepartamento(int id) {
+    public List<EquipamentoBean> lerDepartamento(int id) {
         return repository.lerDepartamento(id);
     }
     

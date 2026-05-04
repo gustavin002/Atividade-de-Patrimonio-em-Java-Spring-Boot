@@ -4,7 +4,9 @@
  */
 package com.projeto.patrimonio.repository;
 
-import com.projeto.patrimonio.model.PatrimonioBean;
+import com.projeto.patrimonio.model.DepartamentoBean;
+import com.projeto.patrimonio.model.EquipamentoBean;
+import com.projeto.patrimonio.model.EquipamentoDepartamentoBean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,8 +17,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class DepartamentoDAO {
-    public List<PatrimonioBean> lerDepartamento(int id) {
-        List<PatrimonioBean> lista = new ArrayList();
+    public List<EquipamentoBean> lerDepartamento(int id) {
+        List<EquipamentoBean> lista = new ArrayList();
 
     try {
         Connection conn = Conexao.conectar();
@@ -26,7 +28,7 @@ public class DepartamentoDAO {
         ResultSet rs = stmt.executeQuery();
 
         while (rs.next()) {
-            PatrimonioBean equipamento = new PatrimonioBean();
+            EquipamentoBean equipamento = new EquipamentoBean();
             equipamento.setIdEquipamento(rs.getInt("id_equipamento"));
             equipamento.setCodigoPatrimonio(rs.getString("codigo_patrimonio"));
             equipamento.setTipo(rs.getString("tipo"));

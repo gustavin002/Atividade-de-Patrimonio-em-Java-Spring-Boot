@@ -4,7 +4,8 @@
  */
 package com.projeto.patrimonio.service;
 
-import com.projeto.patrimonio.model.PatrimonioBean;
+import com.projeto.patrimonio.model.EquipamentoBean;
+import com.projeto.patrimonio.model.EquipamentoDepartamentoBean;
 import com.projeto.patrimonio.repository.EquipamentoDAO;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +17,15 @@ public class EquipamentoService {
     @Autowired
     private EquipamentoDAO repository;
     
-    public List<PatrimonioBean> lerTodos(){
-      return repository.lerTodos();
+    public List<EquipamentoDepartamentoBean> listarEquipamentos(){
+      return repository.listarEquipamentos();
     }
      
-    public void criar(PatrimonioBean equipamento){
+    public void criar(EquipamentoBean equipamento){
         repository.criar(equipamento);
     }
     
-    public void editarEquipamentos(PatrimonioBean equipamento) {
+    public void editarEquipamentos(EquipamentoBean equipamento) {
         repository.editarEquipamentos(equipamento);
     }
     

@@ -4,7 +4,7 @@
  */
 package com.projeto.patrimonio.controller;
 
-import com.projeto.patrimonio.model.PatrimonioBean;
+import com.projeto.patrimonio.model.EquipamentoBean;
 import com.projeto.patrimonio.service.DepartamentoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class DepartamentoController {
     private DepartamentoService service;
     
     @GetMapping("/{id}/equipamentos")
-    public List<PatrimonioBean> lerDepartamento(@PathVariable int id) {
+    public List<EquipamentoBean> lerDepartamento(@PathVariable int id) {
         return service.lerDepartamento(id);
 }
     

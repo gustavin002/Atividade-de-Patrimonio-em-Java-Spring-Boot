@@ -4,7 +4,8 @@
  */
 package com.projeto.patrimonio.repository;
 
-import com.projeto.patrimonio.model.PatrimonioBean;
+import com.projeto.patrimonio.model.EquipamentoBean;
+import com.projeto.patrimonio.model.EquipamentoDepartamentoBean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,32 +16,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class EquipamentoDAO {
-    public List<PatrimonioBean> lerTodos(){
-        List<PatrimonioBean> dados = new ArrayList();
-        try{
-            Connection conn = Conexao.conectar();
-            PreparedStatement stmt = null;
-            ResultSet rs = null;
-            
-            stmt = conn.prepareStatement("SELECT * FROM equipamento");
-            rs = stmt.executeQuery();
-            
-            while(rs.next()){
-                PatrimonioBean equipamento = new PatrimonioBean();
-                equipamento.setIdEquipamento(rs.getInt("id_equipamento"));
-                equipamento.setCodigoPatrimonio(rs.getString("codigo_patrimonio"));
-                equipamento.setTipo(rs.getString("tipo"));
-                equipamento.setMarca(rs.getString("marca"));
-               
-               dados.add(equipamento);
-            }
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
-         return dados;   
-    }
     
-    public void criar(PatrimonioBean equipamento) {
+    public void criar(EquipamentoBean equipamento) {
         try {
             Connection conn = Conexao.conectar();
  
@@ -54,7 +31,7 @@ public class EquipamentoDAO {
                 return; 
                 }
 
-            String sqlInsert = "INSERT INTO itens (codigo_patrimonio, tipo, marca, id_departamento) VALUES (?, ?, ?, ?)";
+            String sqlInsert = "INSERT INTO equipamento (codigo_patrimonio, tipo, marca, id_departamento) VALUES (?, ?, ?, ?)";
             PreparedStatement stat = conn.prepareStatement(sqlInsert);
         
             stat.setString(1, equipamento.getCodigoPatrimonio());
@@ -70,21 +47,44 @@ public class EquipamentoDAO {
         } 
     }
     
-    public void editarEquipamentos(PatrimonioBean equipamento){
+    public List<EquipamentoDepartamentoBean> listarEquipamentos(){
+        List<EquipamentoDepartamentoBean> listar = new ArrayList();
+        try{
+            Connection conn = Conexao.conectar();
+         
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
+         
+            stmt = conn.prepareStatement("SELECT id_equipamento, codigo_patrimonio, tipo, marca, nome, andar FROM equipamento AS e INNER JOIN departamento as d ON e.id_equipamento = d.id_departamento");
+            rs = stmt.executeQuery();
+         
+            while(rs.next()){
+                EquipamentoDepartamentoBean equipamento = new EquipamentoDepartamentoBean();
+                equipamento.setIdEquipamento(rs.getInt("id_equipamento"));
+                equipamento.setCodigoPatrimonio(rs.getString("codigo_patrimonio"));
+                equipamento.setTipo(rs.getString("tipo"));
+                equipamento.setMarca(rs.getString("marca"));
+                equipamento.setNome(rs.getString("nome"));
+                equipamento.setAndar(rs.getInt("andar"));
+            
+                listar.add(equipamento);
+            }
+
+        } catch (SQLException e){
+             e.printStackTrace();
+        }
+         return listar;
+         
+    }
+    
+    public void editarEquipamentos(EquipamentoBean equipamento){
         try {
             Connection conn = Conexao.conectar();
             
             PreparedStatement stmt = null;
             ResultSet rs = null;
             
-            stmt = conn.prepareStatement("UPDATE equipamento SET id_departamento = ? , tipo = ?, marca = ? WHERE id_equipamento = ?");
-            stmt.setInt(1, equipamento.getIdDepartamento());
-            
-            stmt.setString(2, equipamento.getTipo());
-            stmt.setString(3, equipamento.getMarca());
-            stmt.setInt(4, equipamento.getIdEquipamento());
-          
-            stmt = conn.prepareStatement("UPDATE equipamento SET tipo=?, marca=? WHERE id_equipamento=?");
+            stmt = conn.prepareStatement("UPDATE equipamento SET tipo = ?, marca = ? WHERE id_equipamento = ?");
             stmt.setString(1, equipamento.getTipo());
             stmt.setString(2, equipamento.getMarca());
             stmt.setInt(3, equipamento.getIdEquipamento());
