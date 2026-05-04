@@ -5,6 +5,7 @@
 package com.projeto.patrimonio.service;
 
 import com.projeto.patrimonio.model.EquipamentoBean;
+import com.projeto.patrimonio.model.EquipamentoDepartamentoBean;
 import com.projeto.patrimonio.repository.DepartamentoDAO;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,10 @@ public class DepartamentoService {
     
     public List<EquipamentoBean> lerDepartamento(int id) {
         return repository.lerDepartamento(id);
+    }
+    
+    public List<EquipamentoDepartamentoBean> contarEquipamentoPorDepartamento (){
+        return repository.contarEquipamentoPorDepartamento();
     }
     
 }

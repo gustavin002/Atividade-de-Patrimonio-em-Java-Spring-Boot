@@ -5,6 +5,7 @@
 package com.projeto.patrimonio.controller;
 
 import com.projeto.patrimonio.model.EquipamentoBean;
+import com.projeto.patrimonio.model.EquipamentoDepartamentoBean;
 import com.projeto.patrimonio.service.DepartamentoService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +15,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/departamentos")
+@RequestMapping("/api")
 public class DepartamentoController {
     
     @Autowired
     private DepartamentoService service;
     
-    @GetMapping("/{id}/equipamentos")
+    @GetMapping("/departamentos/{id}/equipamentos")
     public List<EquipamentoBean> lerDepartamento(@PathVariable int id) {
         return service.lerDepartamento(id);
 }
+    
+    @GetMapping("/relatorios/contagem-por-departamento")
+    public List<EquipamentoDepartamentoBean> contarEquipamentoPorDepartamento(){
+        return service.contarEquipamentoPorDepartamento();
+    }
     
 }
