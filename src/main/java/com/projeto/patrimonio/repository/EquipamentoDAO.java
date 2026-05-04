@@ -84,10 +84,11 @@ public class EquipamentoDAO {
             PreparedStatement stmt = null;
             ResultSet rs = null;
             
-            stmt = conn.prepareStatement("UPDATE equipamento SET tipo = ?, marca = ? WHERE id_equipamento = ?");
+            stmt = conn.prepareStatement("UPDATE equipamento SET tipo = ?, marca = ?, id_departamento = ? WHERE id_equipamento = ?");
             stmt.setString(1, equipamento.getTipo());
             stmt.setString(2, equipamento.getMarca());
-            stmt.setInt(3, equipamento.getIdEquipamento());
+            stmt.setInt(3, equipamento.getIdDepartamento());
+            stmt.setInt(4, equipamento.getIdEquipamento());
             
             stmt.executeUpdate();
             
@@ -115,4 +116,31 @@ public class EquipamentoDAO {
             e.printStackTrace();
         }
     }
+    public EquipamentoBean buscarPorEtiqueta(String codigo) {
+    EquipamentoBean equipamento = null;
+    try {
+        Connection conn = Conexao.conectar();
+        
+        
+        String sql = "SELECT * FROM equipamento WHERE codigo_patrimonio = ?";
+        PreparedStatement stat = conn.prepareStatement(sql);
+        stat.setString(1, codigo);
+        
+        ResultSet rs = stat.executeQuery();
+        
+ 
+        if (rs.next()) {
+            equipamento = new EquipamentoBean();          
+            equipamento.setIdEquipamento(rs.getInt("id_equipamento"));
+            equipamento.setCodigoPatrimonio(rs.getString("codigo_patrimonio"));
+            equipamento.setTipo(rs.getString("tipo"));
+            equipamento.setMarca(rs.getString("marca"));
+            equipamento.setIdDepartamento(rs.getInt("id_departamento"));
+        }
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return equipamento;
+}
 }

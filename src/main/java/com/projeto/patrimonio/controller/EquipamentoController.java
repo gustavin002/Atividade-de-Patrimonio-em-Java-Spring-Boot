@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -50,4 +51,8 @@ public class EquipamentoController {
         service.excluirEquipamentos(id);
         return "Equipamento excluido com sucesso";
     }
+    @GetMapping("/busca")
+    public EquipamentoBean buscarPorEtiqueta(@RequestParam String codigo) {
+    return service.buscarPorEtiqueta(codigo);
+}
 }

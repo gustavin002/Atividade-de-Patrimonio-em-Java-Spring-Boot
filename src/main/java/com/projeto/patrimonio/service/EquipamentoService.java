@@ -33,4 +33,8 @@ public class EquipamentoService {
         repository.excluirEquipamentos(id);
     }
     
+    public EquipamentoBean buscarPorEtiqueta(String codigo) {
+    return repository.buscarPorEtiqueta(codigo);
+    }
+    
 }
