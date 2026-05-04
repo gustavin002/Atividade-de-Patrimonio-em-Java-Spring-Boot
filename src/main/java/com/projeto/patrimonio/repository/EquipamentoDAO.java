@@ -84,10 +84,11 @@ public class EquipamentoDAO {
             PreparedStatement stmt = null;
             ResultSet rs = null;
             
-            stmt = conn.prepareStatement("UPDATE equipamento SET tipo = ?, marca = ? WHERE id_equipamento = ?");
+            stmt = conn.prepareStatement("UPDATE equipamento SET tipo = ?, marca = ?, id_departamento = ? WHERE id_equipamento = ?");
             stmt.setString(1, equipamento.getTipo());
             stmt.setString(2, equipamento.getMarca());
-            stmt.setInt(3, equipamento.getIdEquipamento());
+            stmt.setInt(3, equipamento.getIdDepartamento());
+            stmt.setInt(4, equipamento.getIdEquipamento());
             
             stmt.executeUpdate();
             
