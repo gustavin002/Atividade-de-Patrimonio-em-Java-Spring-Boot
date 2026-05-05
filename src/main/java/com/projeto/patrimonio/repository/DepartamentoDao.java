@@ -47,5 +47,37 @@ public class DepartamentoDAO {
     }
 
     return lista;
+    
     }
+    
+    public List<EquipamentoDepartamentoBean> contarEquipamentoPorDepartamento() {
+        List<EquipamentoDepartamentoBean> lista = new ArrayList();
+
+    try {
+        Connection conn = Conexao.conectar();
+        PreparedStatement stmt = conn.prepareStatement("SELECT d.nome AS departamento, COUNT(e.id_equipamento) AS totalEquipamentos FROM equipamento e JOIN departamento d ON e.id_departamento = d.id_departamento GROUP BY d.nome;");
+
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            EquipamentoDepartamentoBean equipamento = new EquipamentoDepartamentoBean();
+            equipamento.setNome(rs.getString("nome"));
+            equipamento.setIdEquipamento(rs.getInt("id_equipamento"));
+            equipamento.setIdDepartamento(rs.getInt("id_departamento"));
+
+            lista.add(equipamento);
+        }
+
+        rs.close();
+        stmt.close();
+        conn.close();
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return lista;
+    
+    }
+    
 }
