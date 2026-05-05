@@ -3,8 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.projeto.patrimonio.repository;
-
-import com.projeto.patrimonio.model.DepartamentoBean;
 import com.projeto.patrimonio.model.EquipamentoBean;
 import com.projeto.patrimonio.model.EquipamentoDepartamentoBean;
 import java.sql.Connection;
@@ -53,31 +51,30 @@ public class DepartamentoDAO {
     public List<EquipamentoDepartamentoBean> contarEquipamentoPorDepartamento() {
         List<EquipamentoDepartamentoBean> lista = new ArrayList();
 
-    try {
-        Connection conn = Conexao.conectar();
-        PreparedStatement stmt = conn.prepareStatement("SELECT d.nome AS departamento, COUNT(e.id_equipamento) AS totalEquipamentos FROM equipamento e JOIN departamento d ON e.id_departamento = d.id_departamento GROUP BY d.nome;");
+        try {
+            Connection conn = Conexao.conectar();
+            PreparedStatement stmt = conn.prepareStatement("SELECT d.nome AS nome, COUNT(e.id_equipamento) AS total_equipamentos FROM equipamento e JOIN departamento d ON e.id_departamento = d.id_departamento GROUP BY d.nome;");
 
-        ResultSet rs = stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery();
 
-        while (rs.next()) {
-            EquipamentoDepartamentoBean equipamento = new EquipamentoDepartamentoBean();
-            equipamento.setNome(rs.getString("nome"));
-            equipamento.setIdEquipamento(rs.getInt("id_equipamento"));
-            equipamento.setIdDepartamento(rs.getInt("id_departamento"));
+            while (rs.next()) {
+                EquipamentoDepartamentoBean equipamento = new EquipamentoDepartamentoBean();
+                equipamento.setNome(rs.getString("nome"));
+                equipamento.setTotalEquipamentos(rs.getInt("total_equipamentos"));
 
-            lista.add(equipamento);
+                lista.add(equipamento);
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-        rs.close();
-        stmt.close();
-        conn.close();
-
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-
-    return lista;
+        return lista;
+    
+        }
     
     }
-    
-}

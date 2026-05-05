@@ -12,15 +12,17 @@ public class EquipamentoDepartamentoBean {
     private int idDepartamento;
     private String nome;
     private int andar;
+    private int totalEquipamentos;
 
     public EquipamentoDepartamentoBean() {
     }
 
-    public EquipamentoDepartamentoBean(int idEquipamento, String codigoPatrimonio, String tipo, String marca, int idDepartamento, String nome, int andar) {
+    public EquipamentoDepartamentoBean(int idEquipamento, String codigoPatrimonio, String tipo, String marca, int totalEquipamentos, int idDepartamento, String nome, int andar) {
         this.idEquipamento = idEquipamento;
         this.codigoPatrimonio = codigoPatrimonio;
         this.tipo = tipo;
         this.marca = marca;
+        this.totalEquipamentos = totalEquipamentos;
         this.idDepartamento = idDepartamento;
         this.nome = nome;
         this.andar = andar;
@@ -57,6 +59,14 @@ public class EquipamentoDepartamentoBean {
     public void setMarca(String marca) {
         this.marca = marca;
     }
+    
+    public int getTotalEquipamentos() {
+        return totalEquipamentos;
+    }
+
+    public void setTotalEquipamentos(int totalEquipamentos) {
+        this.totalEquipamentos = totalEquipamentos;
+    }
 
     public int getIdDepartamento() {
         return idDepartamento;
@@ -81,8 +91,6 @@ public class EquipamentoDepartamentoBean {
     public void setAndar(int andar) {
         this.andar = andar;
     }
-
-   
     
 }
 
